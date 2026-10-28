@@ -1,46 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/eyadabukwaik-portfolio/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Eyad AbuKwaik's Professional Portfolio">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Eyad AbuKwaik - Flutter & Android developer crafting intuitive and high-quality apps." />
+  <meta name="theme-color" content="#0A0A0A" />
 
   <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Eyad AbuKwaik">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Eyad AbuKwaik" />
+  <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="manifest" href="manifest.json" />
 
   <title>Eyad AbuKwaik</title>
-  <link rel="manifest" href="manifest.json">
+
+  <!-- Preconnect to external origins for ultra-fast loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://akotjgytunnvoyqtubor.supabase.co" crossorigin />
+
+  <!-- Google Fonts: Montserrat (300, 500, 600, 700, 800) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <!-- Custom Hardware-Accelerated Mouse Cursor -->
+  <div id="cursor-outer" class="cursor-outer" aria-hidden="true"></div>
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+  <!-- Main Scrollable Content -->
+  <main class="main-wrapper">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section" data-section-index="0">
+      <div class="ambient-glow ambient-glow-top-right" aria-hidden="true"></div>
+      <div class="ambient-glow ambient-glow-bottom-left" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-greeting animate-fade-up" style="--delay: 0ms">HELLO, I AM</p>
+        <h1 class="hero-title animate-fade-up" style="--delay: 200ms">
+          Developer <br />
+          Eyad AbuKwaik
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 400ms">
+          Flutter &amp; Android developer crafting intuitive and high-quality apps.
+        </p>
+
+        <div class="hero-cta-group animate-fade-up" style="--delay: 600ms">
+          <button type="button" id="explore-work-btn" class="cta-btn cta-btn-gold">
+            <span>Explore Work</span>
+          </button>
+
+          <a
+            href="https://drive.google.com/file/d/1htPySUR_fc_PBpwioTSCQ9X4OY-TZ-rZ/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-btn cta-btn-blue"
+          >
+            <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 15.575q-.2 0-.375-.062T11.3 15.3l-3.6-3.6q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L11 12.15V5q0-.425.288-.712T12 4t.713.288T13 5v7.15l1.875-1.875q.3-.3.713-.288t.712.313q.275.3.288.7t-.288.7l-3.6 3.6q-.15.15-.325.213t-.375.062M6 20q-.825 0-1.412-.587T4 18v-2q0-.425.288-.712T5 15t.713.288T6 16v2h12v-2q0-.425.288-.712T19 15t.713.288T20 16v2q0 .825-.587 1.413T18 20z" />
+            </svg>
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT CONTAINER -->
+    <div class="content-container">
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" class="portfolio-section" data-section-index="1">
+        <h2 class="section-heading">Experience</h2>
+        <div id="experience-container" class="experience-list">
+          <div class="professional-loader" aria-label="Loading experience">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="portfolio-section" data-section-index="2">
+        <h2 class="section-heading">Featured Works</h2>
+        <div id="projects-container" class="projects-grid">
+          <div class="professional-loader" aria-label="Loading projects">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="portfolio-section" data-section-index="2">
+        <h2 class="section-heading">Skills &amp; Expertise</h2>
+        <div id="skills-container" class="skills-grid">
+          <div class="professional-loader" aria-label="Loading skills">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="portfolio-section" data-section-index="3">
+        <h2 class="section-heading reveal-on-scroll">Get in Touch</h2>
+        <p class="contact-lead reveal-on-scroll">
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+        </p>
+
+        <div class="contact-grid">
+          <!-- Email -->
+          <a
+            href="mailto:eyadramzy2000@gmail.com"
+            class="neumorphic-card contact-card reveal-on-scroll"
+          >
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7L4 8v10h16V8zm0-2l8-5H4z" />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">eyadramzy2000@gmail.com</span>
+            </div>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/eyad-abu-kwaik/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="neumorphic-card contact-card reveal-on-scroll"
+          >
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11 17H7q-2.075 0-3.537-1.463T2 12t1.463-3.537T7 7h4q.425 0 .713.288T12 8t-.288.713T11 9H7q-1.25 0-2.125.875T4 12t.875 2.125T7 15h4q.425 0 .713.288T12 16t-.288.713T11 17m-2-4q-.425 0-.712-.288T8 12t.288-.712T9 11h6q.425 0 .713.288T16 12t-.288.713T15 13zm4 4q-.425 0-.712-.288T12 16t.288-.712T13 15h4q1.25 0 2.125-.875T20 12t-.875-2.125T17 9h-4q-.425 0-.712-.288T12 8t.288-.712T13 7h4q2.075 0 3.538 1.463T22 12t-1.463 3.538T17 17z" />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">linkedin.com/in/eyad-abu-kwaik</span>
+            </div>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/eyadramzy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="neumorphic-card contact-card reveal-on-scroll"
+          >
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.825 12.025L8.7 15.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.213-.325T2.426 12t.063-.375t.212-.325l4.6-4.6q.3-.3.713-.3t.712.3t.3.713t-.3.712zm14.35-.05L15.3 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.3.3-.7.288t-.7-.313t-.3-.712t.3-.713z" />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">github.com/eyadramzy</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Footer Signature -->
+        <footer class="footer-signature">
+          <p class="footer-small">DESIGNED &amp; BUILT BY</p>
+          <p class="footer-author">EYAD Ramzy ABUKWAIK</p>
+          <p class="footer-copyright">Copyright &copy; 2026 / All rights reserved</p>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <!-- Fixed Glassmorphic Dock -->
+  <nav class="dock-wrapper" aria-label="Primary Navigation">
+    <div class="glassmorphic-dock">
+      <button type="button" class="dock-item active" data-target="hero" data-index="0" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 19v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-3q-.425 0-.712-.288T14 20v-5q0-.425-.288-.712T13 14h-2q-.425 0-.712.288T10 15v5q0 .425-.288.713T9 21H6q-.825 0-1.412-.587T4 19" />
+        </svg>
+      </button>
+      <button type="button" class="dock-item" data-target="experience" data-index="1" aria-label="Experience">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 21q-.825 0-1.412-.587T2 19V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v11q0 .825-.587 1.413T20 21zm6-15h4V4h-4z" />
+        </svg>
+      </button>
+      <button type="button" class="dock-item" data-target="projects" data-index="2" aria-label="Projects &amp; Skills">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.825 12.025L8.7 15.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.213-.325T2.426 12t.063-.375t.212-.325l4.6-4.6q.3-.3.713-.3t.712.3t.3.713t-.3.712zm14.35-.05L15.3 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.3.3-.7.288t-.7-.313t-.3-.712t.3-.713z" />
+        </svg>
+      </button>
+      <button type="button" class="dock-item" data-target="contact" data-index="3" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12v1.45q0 1.475-1.012 2.513T18.5 17q-.875 0-1.65-.375t-1.3-1.075q-.725.725-1.638 1.088T12 17q-2.075 0-3.537-1.463T7 12t1.463-3.537T12 7t3.538 1.463T17 12v1.45q0 .65.425 1.1T18.5 15t1.075-.45t.425-1.1V12q0-3.35-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20h4q.425 0 .713.288T17 21t-.288.713T16 22zm0-7q1.25 0 2.125-.875T15 12t-.875-2.125T12 9t-2.125.875T9 12t.875 2.125T12 15" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
