@@ -6,7 +6,7 @@
   // ==========================================
   const SUPABASE_URL = 'https://akotjgytunnvoyqtubor.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_1-wtg-s6xskGpz-n9wbnFg_aMRuJ-OQ';
-  const CACHE_KEY = 'eyad_portfolio_cache_v1';
+  const CACHE_KEY = 'eyad_portfolio_cache_v2';
 
   const FALLBACK_DATA = {
     projects: [
@@ -133,13 +133,56 @@
   }
 
   // ==========================================
-  // 4. DOM RENDERERS
+  // 4. DOM RENDERERS & DATE SORTING
   // ==========================================
+  const MONTH_MAP = {
+    jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+    jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+  };
+
+  function parseSingleDate(part) {
+    if (!part) return 0;
+    const clean = part.trim().toLowerCase();
+    if (clean.includes('present') || clean.includes('now') || clean.includes('current')) {
+      return 9999 * 12 + 12;
+    }
+    const yearMatch = clean.match(/\b(19|20)\d{2}\b/);
+    const year = yearMatch ? parseInt(yearMatch[0], 10) : 0;
+    let month = 1;
+    for (const [mName, mVal] of Object.entries(MONTH_MAP)) {
+      if (clean.includes(mName)) {
+        month = mVal;
+        break;
+      }
+    }
+    return year * 12 + month;
+  }
+
+  function sortExperiencesByDate(experiences) {
+    return [...experiences].sort((a, b) => {
+      const partsA = String(a.period || '').split(/[-–—]/);
+      const partsB = String(b.period || '').split(/[-–—]/);
+
+      const startA = parseSingleDate(partsA[0]);
+      const endA = parseSingleDate(partsA[1] || partsA[0]);
+
+      const startB = parseSingleDate(partsB[0]);
+      const endB = parseSingleDate(partsB[1] || partsB[0]);
+
+      // Sort by start date descending first, then end date descending
+      if (startB !== startA) return startB - startA;
+      if (endB !== endA) return endB - endA;
+      return (a.id || 0) - (b.id || 0);
+    });
+  }
+
   function renderExperience(experiences) {
     const container = document.getElementById('experience-container');
     if (!container) return;
 
-    container.innerHTML = experiences
+    const sorted = sortExperiencesByDate(experiences);
+
+    container.innerHTML = sorted
       .map(
         (exp, idx) => `
       <div class="experience-item reveal-on-scroll" style="--stagger: ${idx * 60}ms">
@@ -267,7 +310,7 @@
     // 2. Fetch fresh data in parallel from Supabase REST API
     try {
       const [experiences, projects, skills] = await Promise.all([
-        fetchTable('experiences?select=*&order=period.desc'),
+        fetchTable('experiences?select=*&order=id.asc'),
         fetchTable('projects?select=*'),
         fetchTable('skills?select=*'),
       ]);
